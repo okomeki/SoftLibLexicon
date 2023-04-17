@@ -1,0 +1,2 @@
+# SoftLibLexicon
+ATProtocol lexicon
