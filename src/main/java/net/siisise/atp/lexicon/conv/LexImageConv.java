@@ -13,17 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.siisise.atp.lexicon.xrpc;
+package net.siisise.atp.lexicon.conv;
 
-import net.siisise.atp.lexicon.LexType;
+import net.siisise.atp.lexicon.blobs.LexImage;
+import net.siisise.json.JSONArray;
+import net.siisise.json.JSONObject;
 
 /**
  *
  */
-public class LexXrpcBody {
+class LexImageConv {
 
-    public String description;
-    public String[] encoding;
-    // LexObject, LexRef
-    public LexType schema;
+    static LexImage toLex(JSONObject obj) {
+        LexImage image = new LexImage(obj);
+        image.accept = (String[]) ((JSONArray)obj.get("accept")).toArray(new String[0]);
+        image.maxSize = (Number)obj.get("accept");
+        image.maxWidth = (Number)obj.get("maxWidth");
+        image.maxHeight = (Number)obj.get("maxHeight");
+        return image;
+    }
+    
 }

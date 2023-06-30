@@ -15,14 +15,30 @@
  */
 package net.siisise.atp.lexicon.primitives;
 
+import net.siisise.atp.lexicon.LexRoot;
+import net.siisise.json.JSONObject;
+
 /**
  *
  */
 public class LexBoolean extends LexPrimitive {
-    Boolean Default;
-    boolean Const;
 
-    LexBoolean() {
-        type = Type.Boolean;
+    public Boolean Default;
+    public Boolean Const;
+
+    public LexBoolean(JSONObject src) {
+        super(Type.Boolean, src);
+        Default = (Boolean) src.get("default");
+        Const = (Boolean)src.get("const");
+    }
+
+    @Override
+    public String toJava(String defName, LexRoot root) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String typeConvert(LexRoot root) {
+        return "boolean";
     }
 }

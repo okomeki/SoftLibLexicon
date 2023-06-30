@@ -16,15 +16,22 @@
 package net.siisise.atp.lexicon;
 
 import java.util.Map;
+import net.siisise.json.JSONObject;
 
 /**
+ * ファイル単位っぽい
  * https://atproto.com/specs/lexicon#interface
  * https://scrapbox.io/Bluesky/Lexicon_スキーマ
  */
 public class LexiconDoc {
-    String id;
-    int revision;
-    String description;
-    Map<String,LexType> defs; // LexUserType|LexArray|LexPrimitive|LexRef[]
-    
+    public JSONObject lex;
+    public String id;
+    public int revision;
+    public String description;
+    public Map<String,LexType> defs; // LexUserType|LexArray|LexPrimitive|LexRef[]
+
+
+    public LexiconDoc(JSONObject lex) {
+        this.lex = lex;
+    }
 }

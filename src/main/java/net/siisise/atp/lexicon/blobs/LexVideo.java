@@ -15,19 +15,32 @@
  */
 package net.siisise.atp.lexicon.blobs;
 
+import net.siisise.atp.lexicon.LexRoot;
 import net.siisise.atp.lexicon.LexUserType;
+import net.siisise.json.JSONObject;
 
 /**
  *
  */
 public class LexVideo extends LexUserType {
-    String[] accept;
-    long maxSize;
-    int maxWidth;
-    int maxHeight;
-    long maxLength;
 
-    LexVideo() {
-        type = Type.video;
+    public String[] accept;
+    public Number maxSize;
+    public Number maxWidth;
+    public Number maxHeight;
+    public Number maxLength;
+
+    public LexVideo(JSONObject obj) {
+        super(Type.video, obj);
+    }
+
+    @Override
+    public String toJava(String defName, LexRoot root) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String typeConvert(LexRoot root) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

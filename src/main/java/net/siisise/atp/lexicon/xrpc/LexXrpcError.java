@@ -18,7 +18,8 @@ package net.siisise.atp.lexicon.xrpc;
 /**
  *
  */
-class LexXrpcError {
-    String name;
-    String description;
+public class LexXrpcError {
+
+    public String name;
+    public String description;
 }

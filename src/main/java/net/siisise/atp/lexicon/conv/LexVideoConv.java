@@ -13,17 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.siisise.atp.lexicon.xrpc;
+package net.siisise.atp.lexicon.conv;
 
-import net.siisise.atp.lexicon.LexType;
+import net.siisise.atp.lexicon.blobs.LexVideo;
+import net.siisise.json.JSONArray;
+import net.siisise.json.JSONObject;
 
 /**
  *
  */
-public class LexXrpcBody {
+class LexVideoConv {
 
-    public String description;
-    public String[] encoding;
-    // LexObject, LexRef
-    public LexType schema;
+    static LexVideo toLex(JSONObject obj) {
+        LexVideo video = new LexVideo(obj);
+        video.accept = (String[]) ((JSONArray)obj.get("accept")).toArray(new String[0]);
+        video.maxSize = (Number)obj.get("accept");
+        video.maxWidth = (Number)obj.get("maxWidth");
+        video.maxHeight = (Number)obj.get("maxHeight");
+        video.maxLength = (Number)obj.get("maxLength");
+        return video;
+    }
+    
 }

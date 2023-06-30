@@ -13,17 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.siisise.atp.lexicon.xrpc;
+package net.siisise.atp.lexicon.conv;
 
-import net.siisise.atp.lexicon.LexType;
+import net.siisise.atp.lexicon.LexRef;
+import net.siisise.atp.lexicon.LexUserType;
+import net.siisise.json.JSONObject;
 
 /**
  *
  */
-public class LexXrpcBody {
+public class LexRefConv {
 
-    public String description;
-    public String[] encoding;
-    // LexObject, LexRef
-    public LexType schema;
+    static LexUserType toLex(String id, JSONObject obj) {
+        return new LexRef(obj);
+    }
+    
 }

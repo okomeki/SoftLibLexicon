@@ -13,26 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.siisise.atp.lexicon;
+package net.siisise.atp.lexicon.conv;
 
+import net.siisise.atp.lexicon.primitives.LexNumber;
+import net.siisise.json.JSONArray;
 import net.siisise.json.JSONObject;
 
 /**
  *
  */
-public class LexToken extends LexUserType {
+class LexNumberConv {
 
-    public LexToken(JSONObject obj) {
-        super(Type.token, obj);
+    public static LexNumber toLex(JSONObject obj) {
+        LexNumber n = new LexNumber(obj);
+        n.Default = (Number) obj.get("default");
+        n.minimum = (Number) obj.get("minimum");
+        n.maximum = (Number) obj.get("maximum");
+        JSONArray en = (JSONArray) obj.get("enum");
+        if (en != null) {
+            n.Enum = (Number[]) en.toArray(new Number[0]);
+        }
+        n.Const = (Number) obj.get("const");
+        return n;
     }
 
-    @Override
-    public String toJava(String defName, LexRoot root) {
-        return "LexToken " + defName;
-    }
-
-    @Override
-    public String typeConvert(LexRoot root) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

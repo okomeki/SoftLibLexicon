@@ -16,13 +16,32 @@
 package net.siisise.atp.lexicon.database;
 
 import net.siisise.atp.lexicon.LexObject;
-import net.siisise.atp.lexicon.LexUserType;
+import net.siisise.atp.lexicon.LexRoot;
+import net.siisise.json.JSONObject;
 
 /**
- *
+ * LexObject の継承でいいのかも
  */
-public class LexRecord extends LexUserType {
-    Type type = Type.record;
-    String key;
-    LexObject record;
+public class LexRecord extends LexObject {
+    public String key;
+    
+    public LexRecord(JSONObject src) {
+        super(Type.record, src);
+        key = (String) src.get("key");
+    }
+
+    @Override
+    public String toJava(String defName, LexRoot root) {
+        StringBuilder rec = new StringBuilder();
+        rec.append("@record(\"");
+        rec.append(key);
+        rec.append("\")");
+        rec.append(super.toJava(defName, root));
+        return rec.toString();
+    }
+
+    @Override
+    public String typeConvert(LexRoot root) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

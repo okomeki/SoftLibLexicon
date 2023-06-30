@@ -16,11 +16,13 @@
 package net.siisise.atp.lexicon.primitives;
 
 import net.siisise.atp.lexicon.LexType;
+import net.siisise.json.JSONObject;
 
 /**
  *
  */
-public class LexPrimitive extends LexType {
+public abstract class LexPrimitive extends LexType {
+
     enum Type {
         Boolean,
         number,
@@ -29,4 +31,19 @@ public class LexPrimitive extends LexType {
     }
     Type type;
     String description;
+    
+    public LexPrimitive(Type type, JSONObject src) {
+        super(src);
+        this.type = type;
+        description = (String) src.get("description");
+    }
+    
+    @Override
+    public String getType() {
+        return type.toString().toLowerCase();
+    }
+    
+    public String getDescription() {
+        return description;
+    }
 }

@@ -13,17 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.siisise.atp.lexicon.xrpc;
+package net.siisise.atp.lexicon.conv;
 
-import net.siisise.atp.lexicon.LexType;
+import net.siisise.atp.lexicon.primitives.LexArray;
+import net.siisise.json.JSONObject;
 
 /**
  *
  */
-public class LexXrpcBody {
+public class LexArrayConv {
 
-    public String description;
-    public String[] encoding;
-    // LexObject, LexRef
-    public LexType schema;
+    public static LexArray toLex(JSONObject obj) {
+        LexArray array = new LexArray(obj);
+        array.description = (String) obj.get("description");
+        String type = (String) ((JSONObject) obj.getJSON("items")).get("type");
+        array.items = new String[]{type};
+        array.maxLength = (Number) obj.get("maxLength");
+        array.minLength = (Number) obj.get("minLength");
+        return array;
+    }
+
 }

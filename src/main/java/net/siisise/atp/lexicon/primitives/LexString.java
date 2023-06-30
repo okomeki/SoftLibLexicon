@@ -15,15 +15,41 @@
  */
 package net.siisise.atp.lexicon.primitives;
 
+import net.siisise.atp.lexicon.LexRoot;
+import net.siisise.json.JSONObject;
+
 /**
  *
  */
-public class LexString {
-    Object type = "string";
-    String Default;
-    int minLength;
-    int maxLength;
-    String[] Enum;
-    String Const;
-    String[] knownValues;
+public class LexString extends LexPrimitive {
+
+    public String Default;
+    public Number minLength;
+    public Number maxLength;
+    public String[] Enum;
+    public String Const;
+    public String[] knownValues;
+
+    public LexString(JSONObject src) {
+        super(Type.string, src);
+        Default = (String) src.get("default");
+        minLength = (Number) src.get("minLength");
+    }
+
+    @Override
+    public String toJava(String defName, LexRoot root) {
+        return "String.toJava(" + defName + ")";
+    }
+
+    @Override
+    public String typeConvert(LexRoot root) {
+        String format = (String) src.get("format");
+        String at;
+        if ( format != null ) {
+            at = "@format(\"" + format + "\") " ;
+        } else {
+            at = "";
+        }
+        return at + "String";
+    }
 }

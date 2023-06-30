@@ -15,18 +15,31 @@
  */
 package net.siisise.atp.lexicon.blobs;
 
+import net.siisise.atp.lexicon.LexRoot;
 import net.siisise.atp.lexicon.LexUserType;
+import net.siisise.json.JSONObject;
 
 /**
  *
  */
 public class LexImage extends LexUserType {
-    String[] accept;
-    int maxSize;
-    int maxWidth;
-    int maxHeight;
 
-    LexImage() {
-        type = Type.image;
+    public String[] accept;
+    public Number maxSize;
+    public Number maxWidth;
+    public Number maxHeight;
+
+    public LexImage(JSONObject obj) {
+        super(Type.image, obj);
+    }
+
+    @Override
+    public String toJava(String defName, LexRoot root) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String typeConvert(LexRoot root) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

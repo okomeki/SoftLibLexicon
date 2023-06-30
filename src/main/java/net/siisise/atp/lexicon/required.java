@@ -22,9 +22,10 @@ import java.lang.annotation.Target;
 
 /**
  *
+ * ATPの方へ入れればいい?
  */
 @java.lang.annotation.Retention(RUNTIME)
-@Target({FIELD,PARAMETER})
+@Target({FIELD, PARAMETER})
 public @interface required {
-    
+
 }

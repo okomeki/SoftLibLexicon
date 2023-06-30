@@ -13,17 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.siisise.atp.lexicon.xrpc;
+package net.siisise.atp.lexicon;
 
-import net.siisise.atp.lexicon.LexType;
+import net.siisise.json.JSONObject;
 
 /**
  *
  */
-public class LexXrpcBody {
+public class LexUnknown extends LexUserType {
 
-    public String description;
-    public String[] encoding;
-    // LexObject, LexRef
-    public LexType schema;
+    public LexUnknown(JSONObject obj) {
+        super(Type.unknown, obj);
+    }
+
+    @Override
+    public String toJava(String defName, LexRoot root) {
+        return "Object " + defName;
+    }
+
+    @Override
+    public String typeConvert(LexRoot root) {
+        return "Object";
+    }
+
+    
 }

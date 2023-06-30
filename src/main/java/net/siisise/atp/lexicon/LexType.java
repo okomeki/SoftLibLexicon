@@ -15,11 +15,37 @@
  */
 package net.siisise.atp.lexicon;
 
+import net.siisise.json.JSONObject;
+
 /**
- * 仕様にないJava風独自型
- * 
+ * 仕様にないJava風独自型.
+ * LexiconDoc での定義 LexUserType | LexArray | LexPrimitive | LexRef[]
+ * LexObject での定義  LexRef      | LexArray | LexPrimitive | LexRef[]
+ * LexArray での定義   LexRef                 | LexPrimitive | LexRef[]
  * 
  */
-public class LexType {
+public abstract class LexType {
     
+    protected JSONObject src;
+    protected String packagePrefix;
+    
+    protected LexType(JSONObject obj) {
+        src = obj;
+    }
+    
+    public abstract String getType();
+
+    public abstract String toJava(String defName, LexRoot root);
+
+    public abstract String typeConvert(LexRoot root);
+    
+    /**
+     * Ref以外で使うかも
+     * @return 
+     */
+    public abstract String getDescription();
+    
+    public JSONObject getSrc() {
+        return src;
+    }
 }

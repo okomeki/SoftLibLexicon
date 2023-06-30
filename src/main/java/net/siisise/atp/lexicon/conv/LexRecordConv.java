@@ -13,17 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.siisise.atp.lexicon.xrpc;
+package net.siisise.atp.lexicon.conv;
 
-import net.siisise.atp.lexicon.LexType;
+import net.siisise.atp.lexicon.database.LexRecord;
+import net.siisise.json.JSONObject;
 
 /**
  *
+ * @author okome
  */
-public class LexXrpcBody {
+public class LexRecordConv {
 
-    public String description;
-    public String[] encoding;
-    // LexObject, LexRef
-    public LexType schema;
+    public static LexRecord toLex(String id, JSONObject obj) {
+        System.out.println("LexRecordConv:" + id + ":" + obj.toJSON());
+        LexRecord rec = new LexRecord(obj);
+        rec.properties = LexObjectConv.toLex(id, (JSONObject) obj.getJSON("record")).properties;
+        return rec;
+    }
 }

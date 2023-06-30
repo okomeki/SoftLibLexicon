@@ -13,17 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.siisise.atp.lexicon.xrpc;
+package net.siisise.atp.lexicon;
 
-import net.siisise.atp.lexicon.LexType;
+import net.siisise.atp.lexicon.database.LexRecord;
+import net.siisise.json.JSONObject;
 
 /**
- *
+ * LexRecord かもしれない LexObject かもしれない
+ * @author okome
  */
-public class LexXrpcBody {
+public class LexParams extends LexRecord {
+    
+    public LexParams(JSONObject obj) {
+        super(obj);
+    }
 
-    public String description;
-    public String[] encoding;
-    // LexObject, LexRef
-    public LexType schema;
+    @Override
+    public String getType() {
+        return "params";
+    }
 }

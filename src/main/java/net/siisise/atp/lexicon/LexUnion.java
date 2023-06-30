@@ -15,24 +15,37 @@
  */
 package net.siisise.atp.lexicon;
 
+import java.util.ArrayList;
+import java.util.List;
 import net.siisise.json.JSONObject;
 
 /**
  *
  */
-public class LexToken extends LexUserType {
+public class LexUnion extends LexUserType {
+    
+    public List<String> refs = new ArrayList<>();
 
-    public LexToken(JSONObject obj) {
-        super(Type.token, obj);
+    public LexUnion(JSONObject obj) {
+        super(Type.union, obj);
     }
 
     @Override
     public String toJava(String defName, LexRoot root) {
-        return "LexToken " + defName;
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public String typeConvert(LexRoot root) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //return "";
+        StringBuilder allName = new StringBuilder();
+        for ( String ref : refs ) {
+            allName.append(" ");
+            allName.append(ref);
+        }
+        
+        return "union (" + allName + ")";
+//        throw new UnsupportedOperationException("Not supported yet.");
     }
+    
 }

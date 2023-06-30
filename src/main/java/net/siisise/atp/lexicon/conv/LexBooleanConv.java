@@ -13,17 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.siisise.atp.lexicon.xrpc;
+package net.siisise.atp.lexicon.conv;
 
-import net.siisise.atp.lexicon.LexType;
+import net.siisise.atp.lexicon.primitives.LexBoolean;
+import net.siisise.json.JSONObject;
 
 /**
  *
  */
-public class LexXrpcBody {
+class LexBooleanConv {
 
-    public String description;
-    public String[] encoding;
-    // LexObject, LexRef
-    public LexType schema;
+    public static LexBoolean toLex(JSONObject obj) {
+        LexBoolean b = new LexBoolean(obj);
+        b.Default = (Boolean) obj.get("default");
+        b.Const = (Boolean) obj.get("const");
+        return b;
+    }
 }

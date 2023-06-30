@@ -15,21 +15,50 @@
  */
 package net.siisise.atp.lexicon;
 
+import net.siisise.json.JSONObject;
+
 /**
  *
  */
-public class LexUserType extends LexType {
+public abstract class LexUserType extends LexType {
+
     public enum Type {
         query,
         procedure,
         record,
         token,
         object,
+        union,
+        unknown,
         blob,
         image,
         video,
         audio
     }
-    public Type type;
-    String description;
+    public String id;
+    Type type;
+    public String description;
+    
+    protected LexUserType(Type type, JSONObject obj) {
+        super(obj);
+        this.type = type;
+        description = (String) obj.get("description");
+    }
+
+    protected LexUserType(Type type, String id, JSONObject obj) {
+        super(obj);
+        this.type = type;
+        this.id = id;
+        description = (String) obj.get("description");
+    }
+    
+    @Override
+    public String getType() {
+        return type.name().toLowerCase();
+    }
+    
+    @Override
+    public String getDescription() {
+        return description;
+    }
 }

@@ -15,17 +15,32 @@
  */
 package net.siisise.atp.lexicon.primitives;
 
+import net.siisise.atp.lexicon.LexRoot;
+import net.siisise.json.JSONObject;
+
 /**
  *
  */
 public class LexNumber extends LexPrimitive {
-    Number Default;
-    Number minimum;
-    Number maxium;
-    Number[] Enum;
-    Number Const;
-    LexNumber() {
-        type = Type.number;
+
+    public Number Default;
+    public Number minimum;
+    public Number maximum;
+    public Number[] Enum;
+    public Number Const;
+
+    public LexNumber(JSONObject src) {
+        super(Type.number, src);
     }
-    
+
+    @Override
+    public String toJava(String defName, LexRoot root) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String typeConvert(LexRoot root) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

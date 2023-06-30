@@ -13,17 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.siisise.atp.lexicon.xrpc;
+package net.siisise.atp.lexicon;
 
-import net.siisise.atp.lexicon.LexType;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
+ * @author okome
  */
-public class LexXrpcBody {
-
-    public String description;
-    public String[] encoding;
-    // LexObject, LexRef
-    public LexType schema;
+public class LexRoot {
+    
+    public Map<String,LexiconDoc> idmap = new HashMap<>();
+    
 }

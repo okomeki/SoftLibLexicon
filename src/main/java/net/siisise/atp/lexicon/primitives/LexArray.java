@@ -15,16 +15,55 @@
  */
 package net.siisise.atp.lexicon.primitives;
 
+import net.siisise.atp.lexicon.LexRoot;
 import net.siisise.atp.lexicon.LexType;
+import net.siisise.json.JSONObject;
 
 /**
  *
  */
 public class LexArray extends LexType {
-    final Object type = "array";
-    String description;
+
+    final String type = "array";
+    public String description;
     //LexRef / LexPrimitive / LexRef[] items;
-    LexType items;
-    int minLength;
-    int maxLength;
+    /**
+     * 型情報 LexRefは複数種類指定できる
+     */
+    public String[] items;
+    public Number minLength;
+    public Number maxLength;
+
+    public LexArray(JSONObject src) {
+        super(src);
+        description = (String) src.get("description");
+    }
+    
+    @Override
+    public String getType() {
+        return type;
+    }
+
+    @Override
+    public String toJava(String defName, LexRoot root) {
+        return "// array //";
+    }
+
+    @Override
+    public String typeConvert(LexRoot root) {
+        StringBuilder sb = new StringBuilder(); 
+        for (String item : items) {
+            if ( !sb.isEmpty() ) {
+                sb.append("+");
+            }
+            sb.append(item);
+            sb.append("[]");
+        }
+        return sb.toString();
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
 }

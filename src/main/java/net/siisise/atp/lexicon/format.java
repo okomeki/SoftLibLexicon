@@ -21,10 +21,11 @@ import static java.lang.annotation.ElementType.PARAMETER;
 import java.lang.annotation.Target;
 
 /**
- *
+ * 簡易な型指定. ATPの方へ入れればいい?
  */
 @java.lang.annotation.Retention(RUNTIME)
-@Target({FIELD,PARAMETER})
+@Target({FIELD, PARAMETER})
 public @interface format {
+
     String value();
 }
